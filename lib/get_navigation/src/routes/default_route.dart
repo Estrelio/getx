@@ -11,10 +11,9 @@ mixin PageRouteReportMixin<T> on Route<T> {
     RouterReportManager.reportCurrentRoute(this);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  bool didPop(T? result) {
     RouterReportManager.reportRouteDispose(this);
+    return super.didPop(result);
   }
 }
 
@@ -53,6 +52,7 @@ class GetPageRoute<T> extends PageRoute<T>
   final Duration transitionDuration;
   final GetPageBuilder? page;
   final String? routeName;
+
   //final String reference;
   final CustomTransition? customTransition;
   final Bindings? binding;
