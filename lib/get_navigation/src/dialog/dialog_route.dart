@@ -26,10 +26,11 @@ class GetDialogRoute<T> extends PopupRoute<T> {
   bool get barrierDismissible => _barrierDismissible;
   final bool _barrierDismissible;
 
+
   @override
-  void dispose() {
+  bool didPop(T? result) {
     RouterReportManager.reportRouteDispose(this);
-    super.dispose();
+    return super.didPop(result);
   }
 
   @override
