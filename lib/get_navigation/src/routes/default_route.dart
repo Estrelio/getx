@@ -11,9 +11,16 @@ mixin PageRouteReportMixin<T> on Route<T> {
     RouterReportManager.reportCurrentRoute(this);
   }
 
+  @override
   bool didPop(T? result) {
     RouterReportManager.reportRouteDispose(this);
     return super.didPop(result);
+  }
+
+  @override
+  void dispose() {
+    RouterReportManager.reportRouteDispose(this);
+    super.dispose();
   }
 }
 
